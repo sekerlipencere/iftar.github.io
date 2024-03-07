@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İftara Ne Kadar Kaldı ?</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+        body { font-family: 'Inconsolata', monospace; background-color: #f3f4f6; margin: 0; padding: 0; }
+        .countdown-container { display: flex; justify-content: center; align-items: center; height: calc(100vh - 100px); flex-direction: column; }
+        .countdown { font-size: 6vw; text-align: center; }
+        @media (min-width: 640px) { .countdown { font-size: 4vw; } }
+        @media (min-width: 768px) { .countdown { font-size: 3vw; } }
+        @media (min-width: 1024px) { .countdown { font-size: 2vw; } }
+        footer { background-color: #333; color: #fff; text-align: center; padding: 10px 0; position: fixed; bottom: 0; width: 100%; }
+        footer a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: #ccc; }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="countdown">
+            <h1 class="text-4xl md:text-6xl lg:text-6xl font-semibold mb-4">İftara Kalan Süre</h1>
+            <div id="countdown" class="text-5xl md:text-7xl lg:text-7xl font-bold"></div>
+        </div>
+    </div>
+
+    <footer>
+        Developed by <a href="https://github.com/sekerlipencere">sekerlipencere</a> | Hayırlı İftarlar 
+    </footer>
+
+    <script>
+        const targetTimes = [
+            "2024-03-11 23:11", "2024-03-12 19:12", "2024-03-13 19:13", "2024-03-14 19:14", "2024-03-15 19:15",
+            "2024-03-16 19:16", "2024-03-17 19:18", "2024-03-18 19:19", "2024-03-19 19:20", "2024-03-20 19:21",
+            "2024-03-21 19:22", "2024-03-22 19:23", "2024-03-23 19:24", "2024-03-24 19:25", "2024-03-25 19:26",
+            "2024-03-26 19:27", "2024-03-27 19:28", "2024-03-28 19:29", "2024-03-29 19:30", "2024-03-30 19:31",
+            "2024-03-31 19:32", "2024-04-01 19:33", "2024-04-02 19:34", "2024-04-03 19:35", "2024-04-04 19:36",
+            "2024-04-05 19:37", "2024-04-06 19:38", "2024-04-07 19:39", "2024-04-08 19:40", "2024-04-09 19:41"
+        ].map(item => new Date(item.replace(/-/g, '/')));
+
+        function updateCountdown() {
+            const now = Date.now();
+            let closestTime = targetTimes.find(target => target - now > 0);
+            if (!closestTime) closestTime = targetTimes[0];
+            let difference = closestTime - now;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            difference %= (1000 * 60 * 60 * 24);
+            const hours = Math.floor(difference / (1000 * 60 * 60));
+            difference %= (1000 * 60 * 60);
+            const minutes = Math.floor(difference / (1000 * 60));
+            difference %= (1000 * 60);
+            const seconds = Math.floor(difference / 1000);
+            document.getElementById('countdown').innerHTML = `${days > 0 ? days + ' gün ' : ''}${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} kaldı`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
