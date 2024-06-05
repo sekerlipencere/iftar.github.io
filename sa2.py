@@ -30,7 +30,7 @@ PAGE = """\
         <div class="flex justify-center mb-8">
             <div class="w-full md:w-2/3 lg:w-1/2">
                 <video id="my-video" class="video-js vjs-default-skin w-full" controls preload="auto" data-setup='{}'>
-                    <source src="/stream.mjpg" type="video/mjpeg">
+                    <source src="192.168.1.105:8000/stream.mjpg" type="video/mjpeg">
                 </video>
             </div>
         </div>
