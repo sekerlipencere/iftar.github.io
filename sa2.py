@@ -21,25 +21,22 @@ PAGE = """\
     <title>Picamera2 MJPEG Streaming Demo</title>
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Video.js CSS -->
-    <link href="https://vjs.zencdn.net/7.16.0/video-js.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold text-center mb-6">Picamera2 MJPEG Streaming Demo</h1>
         <div class="flex justify-center mb-8">
             <div class="w-full md:w-2/3 lg:w-1/2">
-                <video id="my-video" class="video-js vjs-default-skin w-full" controls preload="auto" data-setup='{}'>
-                    <source src="192.168.1.105:8000/stream.mjpg" type="video/mjpeg">
-                </video>
+                <div class="border border-gray-300 rounded-lg overflow-hidden">
+                    <video id="video" class="w-full" autoplay controls></video>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Video.js JavaScript -->
-    <script src="https://vjs.zencdn.net/7.16.0/video.min.js"></script>
-    <!-- Initialize Video.js -->
+    <!-- JavaScript for MJPEG streaming -->
     <script>
-        var player = videojs('my-video');
+        var video = document.getElementById('video');
+        video.src = '/stream.mjpg';
     </script>
 </body>
 </html>
