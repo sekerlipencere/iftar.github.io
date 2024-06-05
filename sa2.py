@@ -25,19 +25,10 @@ PAGE = """\
 <body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold text-center mb-6">Picamera2 MJPEG Streaming Demo</h1>
-        <div class="flex justify-center mb-8">
-            <div class="w-full md:w-2/3 lg:w-1/2">
-                <div class="border border-gray-300 rounded-lg overflow-hidden">
-                    <video id="video" class="w-full" autoplay controls></video>
-                </div>
-            </div>
+        <div class="border border-gray-300 rounded-lg overflow-hidden">
+            <img src="/stream.mjpg" alt="MJPEG Stream" class="w-full h-auto">
         </div>
     </div>
-    <!-- JavaScript for MJPEG streaming -->
-    <script>
-        var video = document.getElementById('video');
-        video.src = '/stream.mjpg';
-    </script>
 </body>
 </html>
 """
